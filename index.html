@@ -60,7 +60,7 @@
     </ul>
     </nav>
 
-!-- COMPONENTE 2: TARJETAS DE PRODUCTO -->
+<!-- COMPONENTE 2: TARJETAS DE PRODUCTO -->
 <section class="seccion productos" id="menu">
   <p class="seccion__etiqueta">Nuestros clásicos</p>
   <h2 class="seccion__titulo">Piatti della Casa</h2>
@@ -169,7 +169,103 @@
 
 <hr class="divisor"/>
 
+<!-- COMPONENTE 4: CONTACTO -->
+<section class="seccion contacto" id="contacto">
+  <p class="seccion__etiqueta">¿Hablamos?</p>
+  <h2 class="seccion__titulo">Contatto & Prenotazione</h2>
+  <div class="contacto__contenedor">
 
+    <div class="contacto__info">
+      <p class="contacto__frase">Reserva tu mesa y vive una <em>experiencia auténtica</em> italiana.</p>
+      <div class="contacto__detalles">
+        <div class="contacto__detalle">
+          <div class="contacto__icono">⚲</div>
+          <div class="contacto__texto"><strong>Dirección</strong>Via Roma 24, Madrid, España</div>
+        </div>
+        <div class="contacto__detalle">
+          <div class="contacto__icono">⏱</div>
+          <div class="contacto__texto"><strong>Horario</strong>Lun–Dom · 12:30–15:30 · 20:00–23:30</div>
+        </div>
+        <div class="contacto__detalle">
+          <div class="contacto__icono">☏</div>
+          <div class="contacto__texto"><strong>Teléfono</strong>+34 91 234 56 78</div>
+        </div>
+        <div class="contacto__detalle">
+          <div class="contacto__icono">✉</div>
+          <div class="contacto__texto"><strong>Email</strong>ciao@lacucina.es</div>
+        </div>
+      </div>
+    </div>
+
+    <form class="formulario" onsubmit="event.preventDefault(); alert('¡Grazie mille! Te contactaremos pronto 🍝')">
+
+      <div class="formulario__fila">
+        <div class="formulario__grupo">
+          <label class="formulario__etiqueta" for="nombre">Nombre</label>
+          <input class="formulario__campo" id="nombre" type="text" placeholder="Marco Rossi" required/>
+        </div>
+        <div class="formulario__grupo">
+          <label class="formulario__etiqueta" for="apellido">Apellido</label>
+          <input class="formulario__campo" id="apellido" type="text" placeholder="Bianchi"/>
+        </div>
+      </div>
+
+      <div class="formulario__fila">
+        <div class="formulario__grupo">
+          <label class="formulario__etiqueta" for="email">Email</label>
+          <input class="formulario__campo" id="email" type="email" placeholder="marco@email.com" required/>
+        </div>
+        <div class="formulario__grupo">
+          <label class="formulario__etiqueta" for="tel">Teléfono</label>
+          <input class="formulario__campo" id="tel" type="tel" placeholder="+34 600 000 000"/>
+        </div>
+      </div>
+
+      <div class="formulario__fila">
+        <div class="formulario__grupo">
+          <label class="formulario__etiqueta" for="fecha">Fecha</label>
+          <input class="formulario__campo" id="fecha" type="date" required/>
+        </div>
+        <div class="formulario__grupo">
+          <label class="formulario__etiqueta" for="hora">Hora</label>
+          <input class="formulario__campo" id="hora" type="time" required/>
+        </div>
+        <div class="formulario__grupo">
+          <label class="formulario__etiqueta" for="personas">Personas</label>
+          <select class="formulario__selector" id="personas">
+            <option>1</option><option selected>2</option><option>3</option>
+            <option>4</option><option>5–8</option><option>+8</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="formulario__grupo formulario__grupo--completo">
+        <label class="formulario__etiqueta" for="ocasion">Ocasión especial</label>
+        <select class="formulario__selector" id="ocasion">
+          <option value="">Sin ocasión especial</option>
+          <option>Cumpleaños</option>
+          <option>Aniversario</option>
+          <option>Reunión de negocios</option>
+          <option>Celebración familiar</option>
+        </select>
+      </div>
+
+      <div class="formulario__grupo formulario__grupo--completo">
+        <label class="formulario__etiqueta" for="mensaje">Comentarios o alergias</label>
+        <textarea class="formulario__area" id="mensaje" placeholder="Ej: alergia al gluten, mesa junto a la ventana…"></textarea>
+      </div>
+
+      <div class="formulario__verificacion">
+        <input class="formulario__check" type="checkbox" id="terminos" required/>
+        <label class="formulario__check-etiqueta" for="terminos">Acepto la política de privacidad y los términos de reserva.</label>
+      </div>
+
+      <button class="formulario__enviar" type="submit">Confirmar reserva</button>
+
+    </form>
+
+  </div>
+</section>
 
 </body>
 </html>
