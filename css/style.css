@@ -1,4 +1,4 @@
-    /* === TOKENS === */
+       /* === TOKENS === */
     :root {
       --cream:#f9f3e8; --ivory:#fdf7ee; --rust:#c0392b; --rust-dk:#96281b;
       --gold:#c9a84c; --dark:#1a1208; --mid:#5a4a35; --border:#d4c4a8;
@@ -43,8 +43,6 @@
       background:repeating-linear-gradient(135deg,
         rgba(255,255,255,.015) 0 1px, transparent 1px 12px);
     }
-
-    /* Encabezado */
     .barra-lateral__encabezado {
       display:flex; flex-direction:column; align-items:center; gap:4px;
       padding:36px 28px 24px;
@@ -58,8 +56,6 @@
       font-size:.65rem; letter-spacing:.3em;
       text-transform:uppercase; color:rgba(201,168,76,.5);
     }
-
-    /* Navegación */
     .barra-lateral__navegacion {
       display:flex; flex-direction:column; flex:1; padding:16px 0;
     }
@@ -86,8 +82,6 @@
       background:var(--rust); color:#fff;
       font-size:.6rem; font-weight:700;
     }
-
-    /* Pie */
     .barra-lateral__pie { padding:16px 28px; border-top:1px solid rgba(212,196,168,.12); }
     .barra-lateral__boton-reserva {
       display:block; width:100%; padding:12px;
@@ -98,7 +92,6 @@
     }
     .barra-lateral__boton-reserva:hover { background:var(--rust-dk); }
 
-    /* Zona contenido (placeholder demo) */
     .zona-contenido {
       display:flex; flex-direction:column; align-items:center; justify-content:center;
       flex:1; gap:12px; padding:40px;
@@ -148,7 +141,6 @@
     .tarjeta-precio:nth-child(3) { animation-delay:.25s; }
     .tarjeta-precio:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(26,18,8,.18); }
 
-    /* Modificador */
     .tarjeta-precio--destacada { background:var(--dark); border-color:var(--gold); }
     .tarjeta-precio--destacada .tarjeta-precio__nombre,
     .tarjeta-precio--destacada .tarjeta-precio__monto,
@@ -157,7 +149,6 @@
     .tarjeta-precio--destacada .tarjeta-precio__simbolo  { color:var(--gold); }
     .tarjeta-precio--destacada .tarjeta-precio__divisor  { background:rgba(201,168,76,.3); }
 
-    /* Elementos */
     .tarjeta-precio__insignia {
       position:absolute; top:-14px; left:50%; transform:translateX(-50%);
       padding:4px 16px; border-radius:20px;
@@ -197,8 +188,6 @@
       transition:background .2s, color .2s, box-shadow .2s;
     }
     .tarjeta-precio__boton:hover { background:var(--rust); color:#fff; box-shadow:var(--s-btn); }
-
-    /* Modificador boton */
     .tarjeta-precio__boton--principal { background:var(--rust); color:#fff; box-shadow:var(--s-btn); }
     .tarjeta-precio__boton--principal:hover { background:var(--rust-dk); border-color:var(--rust-dk); }
 
@@ -210,7 +199,6 @@
       content:''; position:absolute; top:0; left:0; right:0; height:2px;
       background:linear-gradient(90deg,transparent,var(--gold),var(--rust),var(--gold),transparent);
     }
-
     .pie-pagina__cuerpo {
       display:flex; align-items:flex-start; gap:40px;
       padding:64px 60px 48px; flex-wrap:wrap;
@@ -222,8 +210,6 @@
       font-family:var(--serif); font-style:italic; font-size:1.1rem; color:var(--gold);
       padding-bottom:12px; border-bottom:1px solid rgba(212,196,168,.15);
     }
-
-    /* Columna 1 */
     .pie-pagina__logo { font-family:var(--serif); font-style:italic; font-size:2rem; color:var(--gold); line-height:1; }
     .pie-pagina__eslogan { font-size:.68rem; letter-spacing:.25em; text-transform:uppercase; color:rgba(201,168,76,.5); }
     .pie-pagina__descripcion { font-size:.82rem; line-height:1.8; color:rgba(249,243,232,.45); }
@@ -236,8 +222,6 @@
       transition:border-color .2s, color .2s;
     }
     .pie-pagina__red:hover { border-color:var(--gold); color:var(--gold); }
-
-    /* Columna 2 */
     .pie-pagina__lista-contacto { display:flex; flex-direction:column; gap:14px; }
     .pie-pagina__dato { display:flex; align-items:flex-start; gap:12px; font-size:.82rem; line-height:1.6; }
     .pie-pagina__icono-dato { color:var(--gold); flex-shrink:0; margin-top:2px; }
@@ -246,8 +230,6 @@
     .pie-pagina__turno { display:flex; justify-content:space-between; gap:16px; font-size:.79rem; }
     .pie-pagina__dia  { color:rgba(249,243,232,.5); }
     .pie-pagina__hora { font-weight:700; color:var(--cream); }
-
-    /* Columna 3 */
     .pie-pagina__texto-newsletter { font-size:.82rem; color:rgba(249,243,232,.45); line-height:1.7; }
     .pie-pagina__formulario { display:flex; flex-direction:column; gap:8px; }
     .pie-pagina__campo {
@@ -265,8 +247,6 @@
       border-radius:var(--r-sm); box-shadow:var(--s-btn); transition:background .2s;
     }
     .pie-pagina__boton-newsletter:hover { background:var(--rust-dk); }
-
-    /* Barra inferior */
     .pie-pagina__barra-inferior {
       display:flex; align-items:center; justify-content:space-between;
       flex-wrap:wrap; gap:12px; padding:20px 60px;
