@@ -1,340 +1,343 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creación de Proyecto Flexbox, y rama developer - Puntos 1, 2, 3, 4, 5, 6 y 7</title>
-<link rel="stylesheet" href="css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Creación de Proyecto Flexbox — Puntos 1 al 7</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
-        <!-- COMPONENTE 0: ENCABEZADO -->
-    <header class="encabezado">
+
+  <!-- COMPONENTE 0: ENCABEZADO -->
+  <header class="encabezado">
     <div class="encabezado__fondo"></div>
     <div class="encabezado__contenido">
-        <p class="encabezado__etiqueta">Desde 1987 · Roma</p>
-        <h1 class="encabezado__titulo">Bella Notte <em>Cucina Italiana</em></h1>
-        <p class="encabezado__subtitulo">Tradición napolitana en cada bocado. Ingredientes de origen, recetas de nonna y el alma del mediterráneo en tu mesa.</p>
-        <div class="encabezado__separador"><span>🌿</span></div>
-        <div class="encabezado__acciones">
+      <p class="encabezado__etiqueta">Desde 1987 · Roma</p>
+      <h1 class="encabezado__titulo">Bella Notte <em>Cucina Italiana</em></h1>
+      <p class="encabezado__subtitulo">Tradición napolitana en cada bocado. Ingredientes de origen, recetas de nonna y el alma del mediterráneo en tu mesa.</p>
+      <div class="encabezado__separador"><span>🌿</span></div>
+      <div class="encabezado__acciones">
         <a href="#contacto" class="boton boton--solido">Reservar mesa</a>
         <a href="#menu"     class="boton boton--fantasma">Ver menú</a>
-        </div>
-        <div class="encabezado__estadisticas">
+      </div>
+      <div class="encabezado__estadisticas">
         <div class="encabezado__estadistica">
-            <span class="encabezado__estadistica-valor">38+</span>
-            <span class="encabezado__estadistica-etiqueta">Años</span>
-        </div>
-        <div class="encabezado__estadistica">
-            <span class="encabezado__estadistica-valor">24</span>
-            <span class="encabezado__estadistica-etiqueta">Platos</span>
+          <span class="encabezado__estadistica-valor">38+</span>
+          <span class="encabezado__estadistica-etiqueta">Años</span>
         </div>
         <div class="encabezado__estadistica">
-            <span class="encabezado__estadistica-valor">⭐ 4.9</span>
-            <span class="encabezado__estadistica-etiqueta">Rating</span>
+          <span class="encabezado__estadistica-valor">24</span>
+          <span class="encabezado__estadistica-etiqueta">Platos</span>
         </div>
         <div class="encabezado__estadistica">
-            <span class="encabezado__estadistica-valor">100%</span>
-            <span class="encabezado__estadistica-etiqueta">Artesanal</span>
+          <span class="encabezado__estadistica-valor">⭐ 4.9</span>
+          <span class="encabezado__estadistica-etiqueta">Rating</span>
         </div>
+        <div class="encabezado__estadistica">
+          <span class="encabezado__estadistica-valor">100%</span>
+          <span class="encabezado__estadistica-etiqueta">Artesanal</span>
         </div>
+      </div>
     </div>
     <a href="#nav" class="encabezado__scroll">
-        <span>Explorar</span>
-        <span>↓</span>
+      <span>Explorar</span>
+      <span>↓</span>
     </a>
-    </header>
+  </header>
 
-    <!-- COMPONENTE 1: NAVEGACIÓN -->
-    <nav class="navegacion" id="nav">
+  <!-- COMPONENTE 1: NAVEGACIÓN (JOSUE) -->
+  <nav class="navegacion" id="nav">
     <a href="#" class="navegacion__marca">
-        <div class="navegacion__logo">🍝</div>
-        <span class="navegacion__nombre">La <span>Cucina</span></span>
+      <div class="navegacion__logo">🍝</div>
+      <span class="navegacion__nombre">La <span>Cucina</span></span>
     </a>
     <ul class="navegacion__menu">
-        <li><a href="#menu"     class="navegacion__enlace navegacion__enlace--activo">Menú</a></li>
-        <li><a href="#"         class="navegacion__enlace">Nosotros</a></li>
-        <li><a href="#galeria"  class="navegacion__enlace">Galería</a></li>
-        <li><a href="#contacto" class="navegacion__enlace navegacion__enlace--destacado">Reservar</a></li>
+      <li><a href="#menu"          class="navegacion__enlace navegacion__enlace--activo">Menú</a></li>
+      <li><a href="#"              class="navegacion__enlace">Nosotros</a></li>
+      <li><a href="#galeria"       class="navegacion__enlace">Galería</a></li>
+      <li><a href="#menu-del-dia"  class="navegacion__enlace">Hoy</a></li>
+      <li><a href="#contacto"      class="navegacion__enlace navegacion__enlace--destacado">Reservar</a></li>
     </ul>
-    </nav>
+  </nav>
 
-    <!-- COMPONENTE 2: TARJETAS DE PRODUCTO -->
-    <section class="seccion productos" id="menu">
+  <!-- COMPONENTE 2: TARJETAS DE PRODUCTO (JOSUE) -->
+  <section class="seccion productos" id="menu">
     <p class="seccion__etiqueta">Nuestros clásicos</p>
     <h2 class="seccion__titulo">Piatti della Casa</h2>
     <div class="productos__cuadricula">
 
-        <article class="tarjeta">
+      <article class="tarjeta">
         <div class="tarjeta__imagen-contenedor">
-            <img src="./resources/img/pastacarbonara.jpg" alt="Carbonara"/>
-            <span class="tarjeta__insignia">Clásico</span>
+          <img src="./resources/img/pastacarbonara.jpg" alt="Carbonara"/>
+          <span class="tarjeta__insignia">Clásico</span>
         </div>
         <div class="tarjeta__cuerpo">
-            <p class="tarjeta__categoria">Pasta</p>
-            <h3 class="tarjeta__titulo">Spaghetti alla Carbonara</h3>
-            <p class="tarjeta__descripcion">Cremosa salsa de huevo y Pecorino Romano, panceta crujiente y pimienta negra recién molida.</p>
-            <div class="tarjeta__pie">
+          <p class="tarjeta__categoria">Pasta</p>
+          <h3 class="tarjeta__titulo">Spaghetti alla Carbonara</h3>
+          <p class="tarjeta__descripcion">Cremosa salsa de huevo y Pecorino Romano, panceta crujiente y pimienta negra recién molida.</p>
+          <div class="tarjeta__pie">
             <p class="tarjeta__precio">€14 <span>/ porción</span></p>
             <button class="boton boton--solido">Pedir</button>
-            </div>
+          </div>
         </div>
-        </article>
+      </article>
 
-        <article class="tarjeta">
+      <article class="tarjeta">
         <div class="tarjeta__imagen-contenedor">
-            <img src="./resources/img/pizza_margherita.jpg" alt="Pizza Margherita"/>
-            <span class="tarjeta__insignia">Horneados</span>
+          <img src="./resources/img/pizza_margherita.jpg" alt="Pizza Margherita"/>
+          <span class="tarjeta__insignia">Horneados</span>
         </div>
         <div class="tarjeta__cuerpo">
-            <p class="tarjeta__categoria">Pizza</p>
-            <h3 class="tarjeta__titulo">Pizza Margherita DOC</h3>
-            <p class="tarjeta__descripcion">Tomate San Marzano, mozzarella di bufala fresca, albahaca y aceite de oliva extra virgen.</p>
-            <div class="tarjeta__pie">
+          <p class="tarjeta__categoria">Pizza</p>
+          <h3 class="tarjeta__titulo">Pizza Margherita DOC</h3>
+          <p class="tarjeta__descripcion">Tomate San Marzano, mozzarella di bufala fresca, albahaca y aceite de oliva extra virgen.</p>
+          <div class="tarjeta__pie">
             <p class="tarjeta__precio">€12 <span>/ porción</span></p>
             <button class="boton boton--solido">Pedir</button>
-            </div>
+          </div>
         </div>
-        </article>
+      </article>
 
-        <article class="tarjeta">
+      <article class="tarjeta">
         <div class="tarjeta__imagen-contenedor">
-            <img src="/resources/img/Cannoli.jpg" alt="Cannoli"/>
-            <span class="tarjeta__insignia">Postre</span>
+          <img src="./resources/img/Cannoli.jpg" alt="Cannoli"/>
+          <span class="tarjeta__insignia">Postre</span>
         </div>
         <div class="tarjeta__cuerpo">
-            <p class="tarjeta__categoria">Cannoli</p>
-            <h3 class="tarjeta__titulo">Cannoli Siciliani</h3>
-            <p class="tarjeta__descripcion">Masa de harina, vino y manteca enrollada en forma de tubo y frita hasta quedar crujiente.</p>
-            <div class="tarjeta__pie">
+          <p class="tarjeta__categoria">Cannoli</p>
+          <h3 class="tarjeta__titulo">Cannoli Siciliani</h3>
+          <p class="tarjeta__descripcion">Masa de harina, vino y manteca enrollada en forma de tubo y frita hasta quedar crujiente.</p>
+          <div class="tarjeta__pie">
             <p class="tarjeta__precio">€16 <span>/ porción</span></p>
             <button class="boton boton--solido">Pedir</button>
-            </div>
+          </div>
         </div>
-        </article>
+      </article>
 
-        <article class="tarjeta">
+      <article class="tarjeta">
         <div class="tarjeta__imagen-contenedor">
-            <img src="/resources/img/tiramisu.jpg" alt="Tiramisù"/>
-            <span class="tarjeta__insignia">Postre</span>
+          <img src="./resources/img/tiramisu.jpg" alt="Tiramisù"/>
+          <span class="tarjeta__insignia">Postre</span>
         </div>
         <div class="tarjeta__cuerpo">
-            <p class="tarjeta__categoria">Dolci</p>
-            <h3 class="tarjeta__titulo">Tiramisù Tradizionale</h3>
-            <p class="tarjeta__descripcion">Capas de bizcochos en espresso, crema de mascarpone y cacao amargo en polvo.</p>
-            <div class="tarjeta__pie">
+          <p class="tarjeta__categoria">Dolci</p>
+          <h3 class="tarjeta__titulo">Tiramisù Tradizionale</h3>
+          <p class="tarjeta__descripcion">Capas de bizcochos en espresso, crema de mascarpone y cacao amargo en polvo.</p>
+          <div class="tarjeta__pie">
             <p class="tarjeta__precio">€9 <span>/ porción</span></p>
             <button class="boton boton--solido">Pedir</button>
-            </div>
+          </div>
         </div>
-        </article>
+      </article>
 
     </div>
-    </section>
+  </section>
 
-    <hr class="divisor"/>
+  <hr class="divisor"/>
 
-    <!-- COMPONENTE 3: GALERÍA -->
-    <section class="seccion galeria" id="galeria">
+  <!-- COMPONENTE 3: GALERÍA (JOSUE) -->
+  <section class="seccion galeria" id="galeria">
     <p class="seccion__etiqueta">Momentos en cocina</p>
     <h2 class="seccion__titulo">La nostra galleria</h2>
     <div class="galeria__cuadricula">
-        <div class="galeria__elemento">
-        <img src="/resources/img/ambient.jpg" alt="Restaurante"/>
+      <div class="galeria__elemento">
+        <img src="./resources/img/ambient.jpg" alt="Restaurante"/>
         <div class="galeria__superposicion"><p class="galeria__caption">Il nostro ambiente</p></div>
-        </div>
-        <div class="galeria__elemento">
-        <img src="/resources/img/Melanzane alla parmigiana.jpg" alt="Ingredientes"/>
+      </div>
+      <div class="galeria__elemento">
+        <img src="./resources/img/Melanzane alla parmigiana.jpg" alt="Ingredientes"/>
         <div class="galeria__superposicion"><p class="galeria__caption">Ingredienti freschi</p></div>
-        </div>
-        <div class="galeria__elemento">
-        <img src="/resources/img/pasta fatta a mano.jpg" alt="Pasta"/>
+      </div>
+      <div class="galeria__elemento">
+        <img src="./resources/img/pasta fatta a mano.jpg" alt="Pasta"/>
         <div class="galeria__superposicion"><p class="galeria__caption">Pasta fatta a mano</p></div>
-        </div>
-        <div class="galeria__elemento">
-        <img src="/resources/img/rissoto.jpg" alt="Rissoto"/>
+      </div>
+      <div class="galeria__elemento">
+        <img src="./resources/img/rissoto.jpg" alt="Rissoto"/>
         <div class="galeria__superposicion"><p class="galeria__caption">Rissoto</p></div>
-        </div>
-        <div class="galeria__elemento">
-        <img src="/resources/img/vinno_rosso.avif" alt="Vino"/>
+      </div>
+      <div class="galeria__elemento">
+        <img src="./resources/img/vinno_rosso.avif" alt="Vino"/>
         <div class="galeria__superposicion"><p class="galeria__caption">Vino rosso</p></div>
-        </div>
-        <div class="galeria__elemento">
-        <img src="/resources/img/La magia in cucina.jpg" alt="Chef"/>
+      </div>
+      <div class="galeria__elemento">
+        <img src="./resources/img/La magia in cucina.jpg" alt="Chef"/>
         <div class="galeria__superposicion"><p class="galeria__caption">La magia in cucina</p></div>
-        </div>
+      </div>
     </div>
-    </section>
+  </section>
 
-<hr class="divisor"/>
+  <hr class="divisor"/>
 
-    <!-- COMPONENTE 4: CONTACTO -->
-    <section class="seccion contacto" id="contacto">
+  <!-- COMPONENTE 5, 6 y 7: MENÚ DEL DÍA + TESTIMONIALES (SARA) -->
+  <section class="seccion" id="menu-del-dia">
+    <div class="todo-list">
+
+      <!-- Encabezado de sección con ícono y texto (componente 5) -->
+      <header class="todo-list__header">
+        <div class="todo-list__icon-container">
+          <img src="./resources/img/fabrizio_65-italian-pasta-7432298_1280.jpg" alt="icono"/>
+        </div>
+        <div class="todo-list__info">
+          <h2 class="todo-list__title">Bella Notte</h2>
+          <p class="todo-list__descripcion">Cocina italiana autentica dal 1987. Sabores de Roma y Toscana preparados con ingredientes frescos de temporada y alta calidad.</p>
+        </div>
+      </header>
+
+      <hr class="todo-list__divisor"/>
+
+      <!-- Lista de tareas centrada y espaciada (componente 6) -->
+      <ul class="todo-list__items">
+        <li class="todo-list__item">
+          <div class="todo-list__contenido">
+            <span class="todo-list__text">Brunch</span>
+          </div>
+          <a href="Brunch.html" target="_blank">
+            <button class="todo-list__button-complete">☕︎</button>
+          </a>
+        </li>
+        <li class="todo-list__item todo-list__item--pendiente">
+          <div class="todo-list__contenido">
+            <span class="todo-list__text">Lunchs</span>
+          </div>
+          <a href="Lunch.html" target="_blank">
+            <button class="todo-list__button todo-list__button--delete">𓌉◯𓇋</button>
+          </a>
+        </li>
+        <li class="todo-list__item todo-list__item--pendiente">
+          <div class="todo-list__contenido">
+            <span class="todo-list__text">Desserts</span>
+          </div>
+          <a href="Desserts.html" target="_blank">
+            <button class="todo-list__button todo-list__button--delete">𓐐𓎩</button>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Testimoniales con avatar izquierda y texto derecha (componente 7) -->
+      <div class="testimonial__chef">
+        <div class="testimonial__avatar-wrapper">
+          <img class="testimonial__avatar" src="./resources/img/ChatGPT Image 20 feb 2026, 12_30_36 a.m..png" alt="Chef Josue"/>
+        </div>
+        <div class="testimonial__content">
+          <p class="testimonial__text">Ogni piatto racconta una storia. La cucina è amore fatto cibo.</p>
+          <span class="testimonial__autor">Josue Solanini — Chef Executivo</span>
+        </div>
+      </div>
+
+      <div class="testimonial__chef">
+        <div class="testimonial__avatar-wrapper">
+          <img class="testimonial__avatar" src="./resources/img/ChatGPT Image 20 feb 2026, 12_45_21 a.m..png" alt="Chef Sara"/>
+        </div>
+        <div class="testimonial__content">
+          <p class="testimonial__text">"Il segreto è la passione. Ogni ingrediente merita rispetto."</p>
+          <span class="testimonial__autor">Sarianni D' Rojarelli — Chef líder</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divisor"/>
+
+  <!-- COMPONENTE 4: CONTACTO (JOSUE) -->
+  <section class="seccion contacto" id="contacto">
     <p class="seccion__etiqueta">¿Hablamos?</p>
     <h2 class="seccion__titulo">Contatto & Prenotazione</h2>
     <div class="contacto__contenedor">
 
-        <div class="contacto__info">
+      <div class="contacto__info">
         <p class="contacto__frase">Reserva tu mesa y vive una <em>experiencia auténtica</em> italiana.</p>
         <div class="contacto__detalles">
-            <div class="contacto__detalle">
+          <div class="contacto__detalle">
             <div class="contacto__icono">⚲</div>
             <div class="contacto__texto"><strong>Dirección</strong>Via Roma 24, Madrid, España</div>
-            </div>
-            <div class="contacto__detalle">
+          </div>
+          <div class="contacto__detalle">
             <div class="contacto__icono">⏱</div>
             <div class="contacto__texto"><strong>Horario</strong>Lun–Dom · 12:30–15:30 · 20:00–23:30</div>
-            </div>
-            <div class="contacto__detalle">
+          </div>
+          <div class="contacto__detalle">
             <div class="contacto__icono">☏</div>
             <div class="contacto__texto"><strong>Teléfono</strong>+34 91 234 56 78</div>
-            </div>
-            <div class="contacto__detalle">
+          </div>
+          <div class="contacto__detalle">
             <div class="contacto__icono">✉</div>
             <div class="contacto__texto"><strong>Email</strong>ciao@lacucina.es</div>
-            </div>
+          </div>
         </div>
-        </div>
+      </div>
 
-        <form class="formulario" onsubmit="event.preventDefault(); alert('¡Grazie mille! Te contactaremos pronto 🍝')">
+      <form class="formulario" onsubmit="event.preventDefault(); alert('¡Grazie mille! Te contactaremos pronto 🍝')">
 
         <div class="formulario__fila">
-            <div class="formulario__grupo">
+          <div class="formulario__grupo">
             <label class="formulario__etiqueta" for="nombre">Nombre</label>
             <input class="formulario__campo" id="nombre" type="text" placeholder="Marco Rossi" required/>
-            </div>
-            <div class="formulario__grupo">
+          </div>
+          <div class="formulario__grupo">
             <label class="formulario__etiqueta" for="apellido">Apellido</label>
             <input class="formulario__campo" id="apellido" type="text" placeholder="Bianchi"/>
-            </div>
+          </div>
         </div>
 
         <div class="formulario__fila">
-            <div class="formulario__grupo">
+          <div class="formulario__grupo">
             <label class="formulario__etiqueta" for="email">Email</label>
             <input class="formulario__campo" id="email" type="email" placeholder="marco@email.com" required/>
-            </div>
-            <div class="formulario__grupo">
+          </div>
+          <div class="formulario__grupo">
             <label class="formulario__etiqueta" for="tel">Teléfono</label>
             <input class="formulario__campo" id="tel" type="tel" placeholder="+34 600 000 000"/>
-            </div>
+          </div>
         </div>
 
         <div class="formulario__fila">
-            <div class="formulario__grupo">
+          <div class="formulario__grupo">
             <label class="formulario__etiqueta" for="fecha">Fecha</label>
             <input class="formulario__campo" id="fecha" type="date" required/>
-            </div>
-            <div class="formulario__grupo">
+          </div>
+          <div class="formulario__grupo">
             <label class="formulario__etiqueta" for="hora">Hora</label>
             <input class="formulario__campo" id="hora" type="time" required/>
-            </div>
-            <div class="formulario__grupo">
+          </div>
+          <div class="formulario__grupo">
             <label class="formulario__etiqueta" for="personas">Personas</label>
             <select class="formulario__selector" id="personas">
-                <option>1</option><option selected>2</option><option>3</option>
-                <option>4</option><option>5–8</option><option>+8</option>
+              <option>1</option><option selected>2</option><option>3</option>
+              <option>4</option><option>5–8</option><option>+8</option>
             </select>
-            </div>
+          </div>
         </div>
 
         <div class="formulario__grupo formulario__grupo--completo">
-            <label class="formulario__etiqueta" for="ocasion">Ocasión especial</label>
-            <select class="formulario__selector" id="ocasion">
+          <label class="formulario__etiqueta" for="ocasion">Ocasión especial</label>
+          <select class="formulario__selector" id="ocasion">
             <option value="">Sin ocasión especial</option>
             <option>Cumpleaños</option>
             <option>Aniversario</option>
             <option>Reunión de negocios</option>
             <option>Celebración familiar</option>
-            </select>
+          </select>
         </div>
 
         <div class="formulario__grupo formulario__grupo--completo">
-            <label class="formulario__etiqueta" for="mensaje">Comentarios o alergias</label>
-            <textarea class="formulario__area" id="mensaje" placeholder="Ej: alergia al gluten, mesa junto a la ventana…"></textarea>
+          <label class="formulario__etiqueta" for="mensaje">Comentarios o alergias</label>
+          <textarea class="formulario__area" id="mensaje" placeholder="Ej: alergia al gluten, mesa junto a la ventana…"></textarea>
         </div>
 
         <div class="formulario__verificacion">
-            <input class="formulario__check" type="checkbox" id="terminos" required/>
-            <label class="formulario__check-etiqueta" for="terminos">Acepto la política de privacidad y los términos de reserva.</label>
+          <input class="formulario__check" type="checkbox" id="terminos" required/>
+          <label class="formulario__check-etiqueta" for="terminos">Acepto la política de privacidad y los términos de reserva.</label>
         </div>
 
         <button class="formulario__enviar" type="submit">Confirmar reserva</button>
 
-        </form>
+      </form>
 
     </div>
-    </section>
+  </section>
 
-
-  <div class="todo-list">
-    <header class="todo-list__header">
-        <div class="todo-list__icon-container">
-        <div class="todo-list__icon-container">
-        <img src="/resources/img/fabrizio_65-italian-pasta-7432298_1280.jpg" alt="icono">
-        </div>
-        </div>
-        <div class="todo-list__info">
-        <h2 class="todo-list__title">Bella Notte</h2>
-        <p class="todo-list__descripcion"> Cocina italiana autentica dal 1987. Sabores de Roma y Toscana 
-        preparados con ingredientes frescos de temporada y alta calidad. </p>
-        </div>
-    </header>
-    <hr class="todo-list__divisor">
-    <ul class="todo-list__items">
-        <li class="todo-list__item">
-        <div class="todo-list__contenido">
-            <span class="todo-list__text">Brunch</span>
-        </div>
-        <a href="Brunch.html" target="_blank">
-        <button class="todo-list__button-complete">☕︎</button>
-        </a>
-        </li>
-        <li class="todo-list__item todo-list__item--pendiente">
-        <div class="todo-list__contenido">
-            <span class="todo-list__text">Lunchs</span>
-        </div>
-        <a href="Lunch.html" target="_blank">
-        <button class="todo-list__button todo-list__button--delete">𓌉◯𓇋</button>
-        </a>
-    </li>
-        <li class="todo-list__item todo-list__item--pendiente">
-    <div class="todo-list__contenido">
-    <span class="todo-list__text">Desserts</span>
-    </div>
-    <a href="Desserts.html" target="_blank"></a>
-    <button class="todo-list__button todo-list__button--delete">𓐐𓎩</button>
-</a>
-</li>
-    </ul>
-<div class="testimonial__chef">
-    <div class="testimonial__avatar-wrapper">
-    <img class="testimonial__avatar" src="/resources/img/ChatGPT Image 20 feb 2026, 12_30_36 a.m..png" alt="Chef Josue">
-    </div>
-    <div class="testimonial__content">
-    <p class="testimonial__text">
-        Ogni piatto racconta una storia. La cucina è amore fatto cibo.
-    </p>
-    <span class="testimonial__autor">Josue Solanini — Chef Executivo</span>
-    </div>
-</div>
-
-
-<div class="testimonial__chef">
-    <div class="testimonial__avatar-wrapper">
-    <img class="testimonial__avatar" src="/resources/img/ChatGPT Image 20 feb 2026, 12_45_21 a.m..png" alt="Chef Maria">
-    </div>
-    <div class="testimonial__content">
-    <p class="testimonial__text">
-        "Il segreto è la passione. Ogni ingrediente merita rispetto."
-    </p>
-    <span class="testimonial__autor">Sarianni D’ Rojarelli — Chef líder </span>
-    </div>
-    </div>
-    </section>
-    </div>
-  
-
-  
 </body>
 </html>
