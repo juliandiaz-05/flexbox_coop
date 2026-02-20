@@ -1,197 +1,453 @@
-
-
-
-/* === 1. TOKENS: variables globales === */
+/* ==============================================
+   TOKENS — Variables globales unificadas
+   Josué + variables de opacidad de Julián
+   ============================================== */
 :root {
-  /* Colores */
-  --cream:#f9f3e8;        /* Fondo principal */
-  --ivory:#fdf7ee;        /* Fondo secundario */
-  --rust:#c0392b;         /* Rojo — botones y acentos */
-  --rust-dk:#96281b;      /* Rojo oscuro — hover */
-  --gold:#c9a84c;         /* Dorado — títulos y detalles */
-  --dark:#1a1208;         /* Casi negro — sidebar y footer */
-  --mid:#5a4a35;          /* Café — textos secundarios */
-  --border:#d4c4a8;       /* Beige — bordes y líneas */
+  /* Colores base */
+  --cream:     #f9f3e8;       /* Fondo principal */
+  --ivory:     #fdf7ee;       /* Fondo secundario */
+  --rust:      #c0392b;       /* Rojo — botones y acentos */
+  --rust-dk:   #96281b;       /* Rojo oscuro — hover */
+  --gold:      #c9a84c;       /* Dorado — títulos y detalles */
+  --dark:      #1a1208;       /* Casi negro — sidebar y footer */
+  --mid:       #5a4a35;       /* Café — textos secundarios */
+  --border:    #d4c4a8;       /* Beige — bordes y líneas */
 
   /* Tipografía */
-  --serif:'Playfair Display',Georgia,serif;
-  --sans:'Lato',sans-serif;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans:  'Lato', sans-serif;
 
-  /* Radios, sombras y opacidades reutilizadas */
-  --r-sm:4px; --r-lg:20px;
-  --s-card:0 8px 32px rgba(26,18,8,.12);
-  --s-btn:0 4px 12px rgba(192,57,43,.35);
-  --gold-a5:rgba(201,168,76,.5);
-  --gold-a1:rgba(201,168,76,.1);
-  --cream-a6:rgba(249,243,232,.6);
-  --cream-a3:rgba(249,243,232,.3);
-  --border-a2:rgba(212,196,168,.15);
+  /* Radios y sombras */
+  --r-sm:   4px;
+  --r-lg:   20px;
+  --s-card: 0 8px 32px rgba(26,18,8,.12);
+  --s-btn:  0 4px 12px rgba(192,57,43,.35);
+
+  /* Opacidades reutilizables — agregadas de Julián */
+  --gold-a5:   rgba(201,168,76,.5);
+  --gold-a1:   rgba(201,168,76,.1);
+  --cream-a6:  rgba(249,243,232,.6);
+  --cream-a3:  rgba(249,243,232,.3);
+  --border-a2: rgba(212,196,168,.15);
 }
 
 
-/* === 2. RESET === */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--sans);background:var(--cream);color:var(--dark)}
-ul{list-style:none}
-a,button{cursor:pointer;text-decoration:none}
-button{font-family:inherit;border:none}
+/* ==============================================
+   RESET
+   ============================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--cream); color: var(--dark); line-height: 1.6; }
+ul   { list-style: none; }
+a    { cursor: pointer; text-decoration: none; }
+img  { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 
-/* === 3. UTILIDADES: clases compartidas entre bloques === */
-.u-serif-italic{font-family:var(--serif);font-style:italic}
-.u-btn-rust{background:var(--rust);color:#fff;border-radius:var(--r-sm);box-shadow:var(--s-btn);transition:background .2s}
-.u-btn-rust:hover{background:var(--rust-dk)}
+/* ==============================================
+   UTILIDADES — clases compartidas (Julián)
+   ============================================== */
+.u-serif-italic { font-family: var(--serif); font-style: italic; }
+
+/* border-radius: 40px para ser consistente con .boton de Josué */
+.u-btn-rust { background: var(--rust); color: #fff; border-radius: 40px; box-shadow: var(--s-btn); transition: background .2s; }
+.u-btn-rust:hover { background: var(--rust-dk); }
 
 
-/* === 4. SEPARADOR: divisor visual de demo === */
-.separador{display:flex;flex-direction:column;align-items:center;gap:4px;padding:48px 16px 16px;color:var(--gold)}
-.separador__linea{display:flex;align-items:center;gap:16px;width:100%;max-width:520px}
-/* Las líneas horizontales se generan con pseudo-elementos */
+/* ==============================================
+   UTILIDADES GENERALES (Josué)
+   ============================================== */
+.seccion { padding: 64px 32px; }
+.seccion__etiqueta { font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--rust); margin-bottom: 6px; }
+.seccion__titulo   { font-family: var(--serif); font-size: 2rem; margin-bottom: 40px; }
+.divisor { border: none; border-top: 2px dashed var(--border); }
+
+
+/* ==============================================
+   SEPARADOR — divisor visual de demo (Julián)
+   ============================================== */
+.separador { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 48px 16px 16px; color: var(--gold); }
+.separador__linea { display: flex; align-items: center; gap: 16px; width: 100%; max-width: 520px; }
 .separador__linea::before,
-.separador__linea::after{content:'';flex:1;height:1px;background:var(--border)}
+.separador__linea::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
 
-/* === 5. BARRA-LATERAL: sidebar de navegación (Componente 10) === */
-
-/* Wrapper que coloca sidebar + contenido en fila */
-.vista-previa{display:flex;min-height:520px}
-
-/* Bloque: columna fija de 260px, no se encoge */
-.barra-lateral{display:flex;flex-direction:column;width:260px;flex-shrink:0;background:var(--dark);overflow:hidden;position:relative}
-/* Textura diagonal decorativa generada con CSS puro */
-.barra-lateral::before{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(135deg,rgba(255,255,255,.015) 0 1px,transparent 1px 12px)}
-
-/* Encabezado: logo y subtítulo centrados */
-.barra-lateral__encabezado{display:flex;flex-direction:column;align-items:center;gap:4px;padding:36px 28px 24px;border-bottom:1px solid var(--border-a2)}
-.barra-lateral__logo{font-size:1.6rem;color:var(--gold);line-height:1}
-.barra-lateral__subtitulo{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-a5)}
-
-/* Navegación: flex:1 para ocupar todo el espacio y empujar el pie al fondo */
-.barra-lateral__navegacion{display:flex;flex-direction:column;flex:1;padding:16px 0}
-
-/* Ítem: ícono + etiqueta + badge en fila */
-.barra-lateral__item{display:flex;align-items:center;gap:14px;padding:14px 28px;color:var(--cream-a6);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;border-left:3px solid transparent;transition:color .2s,background .2s,border-left-color .2s}
-.barra-lateral__item:hover{color:var(--cream);background:rgba(201,168,76,.08);border-left-color:rgba(201,168,76,.4)}
-/* Modificador: ítem activo con borde dorado y fondo sutil */
-.barra-lateral__item--activo{color:var(--gold);font-weight:700;background:var(--gold-a1);border-left-color:var(--gold)}
-
-.barra-lateral__icono{width:20px;text-align:center;flex-shrink:0}
-.barra-lateral__etiqueta{flex:1} /* Empuja el badge a la derecha */
-.barra-lateral__badge{padding:2px 7px;border-radius:20px;background:var(--rust);color:#fff;font-size:.6rem;font-weight:700}
-
-/* Pie: botón de reserva siempre al fondo del sidebar */
-.barra-lateral__pie{padding:16px 28px;border-top:1px solid rgba(212,196,168,.12)}
-.barra-lateral__boton-reserva{display:block;width:100%;padding:12px;font-size:.9rem;text-align:center}
-
-/* Zona de contenido placeholder junto al sidebar */
-.zona-contenido{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:12px;padding:40px;background:var(--ivory);color:var(--mid);font-size:1.1rem;text-align:center}
-.zona-contenido__flecha{font-size:2rem;color:var(--border)}
+/* ==============================================
+   BOTÓN (Josué)
+   ============================================== */
+.boton {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px; border-radius: 40px; border: none; cursor: pointer;
+  font-family: var(--sans); font-size: .85rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+  transition: background .2s, transform .15s, box-shadow .2s;
+}
+.boton--solido   { background: var(--rust); color: #fff; box-shadow: var(--s-btn); }
+.boton--fantasma { background: transparent; color: var(--cream); border: 2px solid rgba(249,243,232,.45); }
+.boton--solido:hover,
+.boton--fantasma:hover { transform: translateY(-2px); }
+.boton--solido:hover   { background: var(--rust-dk); }
+.boton--fantasma:hover { border-color: var(--cream); }
 
 
-/* === 6. SECCION-PRECIOS: encabezado + cuadrícula (Componente 1) === */
-.seccion-precios{padding:56px 40px;background:var(--ivory)}
-.seccion-precios__encabezado{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:48px;text-align:center}
-.seccion-precios__titulo{font-size:2.4rem;line-height:1.1}
-.seccion-precios__descripcion{font-size:.92rem;color:var(--mid);line-height:1.7}
-/* Las tarjetas se alinean en fila, misma altura, responsive con flex-wrap */
-.seccion-precios__cuadricula{display:flex;align-items:stretch;justify-content:center;gap:24px;flex-wrap:wrap}
+/* ==============================================
+   ENCABEZADO (Josué)
+   ============================================== */
+.encabezado {
+  position: relative; min-height: 100vh; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 40px 24px;
+}
+.encabezado__fondo {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(to bottom, rgba(26,18,8,.72), rgba(26,18,8,.55) 60%, rgba(26,18,8,.82)),
+    url('/resources/img/content_background.png') center/cover;
+}
+.encabezado__contenido {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 20px; max-width: 780px;
+}
+.encabezado__etiqueta {
+  display: flex; align-items: center; gap: 14px;
+  font-size: .7rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; color: var(--gold);
+}
+.encabezado__etiqueta::before,
+.encabezado__etiqueta::after { content: ''; width: 40px; height: 1px; background: var(--gold); opacity: .6; }
+.encabezado__titulo    { font-family: var(--serif); font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; color: var(--cream); line-height: 1.05; }
+.encabezado__titulo em { display: block; font-style: italic; font-weight: 400; color: var(--gold); }
+.encabezado__subtitulo { font-family: var(--serif); font-style: italic; font-size: clamp(1rem, 2.5vw, 1.3rem); color: rgba(249,243,232,.75); max-width: 520px; }
+.encabezado__separador { display: flex; align-items: center; gap: 14px; width: 240px; opacity: .35; }
+.encabezado__separador::before,
+.encabezado__separador::after { content: ''; flex: 1; height: 1px; background: var(--cream); }
+.encabezado__acciones  { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.encabezado__estadisticas {
+  display: flex; margin-top: 12px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.15); border-radius: 60px;
+  backdrop-filter: blur(8px); background: rgba(26,18,8,.35);
+}
+.encabezado__estadistica { display: flex; flex-direction: column; align-items: center; padding: 14px 24px; gap: 2px; }
+.encabezado__estadistica + .encabezado__estadistica { border-left: 1px solid rgba(255,255,255,.15); }
+.encabezado__estadistica-valor    { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: var(--gold); }
+.encabezado__estadistica-etiqueta { font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(249,243,232,.55); }
+.encabezado__scroll {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(249,243,232,.45); text-decoration: none;
+  animation: rebotar 2s infinite;
+}
+@keyframes rebotar {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
 
 
-/* === 7. TARJETA-PRECIO: cada plan de precios === */
+/* ==============================================
+   NAVEGACIÓN (Josué)
+   ============================================== */
+.navegacion {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 68px; background: var(--dark);
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,.4);
+}
+.navegacion__marca  { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.navegacion__logo   { width: 38px; height: 38px; border-radius: 50%; background: var(--rust); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.navegacion__nombre { font-family: var(--serif); font-style: italic; font-size: 1.35rem; color: var(--cream); }
+.navegacion__nombre span { color: var(--gold); }
+.navegacion__menu   { display: flex; align-items: center; gap: 4px; list-style: none; }
+.navegacion__enlace { display: block; padding: 7px 16px; border-radius: var(--r-sm); text-decoration: none; color: #c8b89a; font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: color .2s, background .2s; }
+.navegacion__enlace:hover,
+.navegacion__enlace--activo    { color: var(--cream); background: rgba(255,255,255,.08); }
+.navegacion__enlace--destacado { background: var(--rust); color: #fff !important; border-radius: 30px; box-shadow: var(--s-btn); }
+.navegacion__enlace--destacado:hover { background: var(--rust-dk); }
 
-/* Bloque: columna flexible, mínimo 260px de ancho */
-.tarjeta-precio{display:flex;flex-direction:column;align-items:center;flex:1 1 260px;max-width:300px;padding:40px 32px;background:var(--cream);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--s-card);position:relative;transition:transform .25s,box-shadow .25s;animation:fadeUp .5s ease both}
-/* Aparición escalonada: cada tarjeta entra 100ms después */
-.tarjeta-precio:nth-child(1){animation-delay:.05s}
-.tarjeta-precio:nth-child(2){animation-delay:.15s}
-.tarjeta-precio:nth-child(3){animation-delay:.25s}
-.tarjeta-precio:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(26,18,8,.18)}
 
-/* Modificador: tarjeta destacada con fondo oscuro */
-.tarjeta-precio--destacada{background:var(--dark);border-color:var(--gold)}
-/* Sobrescribe colores de texto para mantener legibilidad sobre fondo oscuro */
+/* ==============================================
+   TARJETAS (Josué)
+   ============================================== */
+.productos { background: var(--ivory); }
+.productos__cuadricula { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+.tarjeta {
+  display: flex; flex-direction: column; width: 272px;
+  border-radius: var(--r-lg); background: #fff; box-shadow: var(--s-card);
+  overflow: hidden; transition: transform .3s, box-shadow .3s;
+}
+.tarjeta:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(26,18,8,.18); }
+.tarjeta__imagen-contenedor { position: relative; height: 196px; overflow: hidden; }
+.tarjeta__imagen-contenedor img { transition: transform .4s; }
+.tarjeta:hover .tarjeta__imagen-contenedor img { transform: scale(1.06); }
+.tarjeta__insignia  { position: absolute; top: 12px; right: 12px; background: var(--gold); color: var(--dark); font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 30px; }
+.tarjeta__cuerpo    { display: flex; flex-direction: column; flex: 1; padding: 20px 22px 24px; gap: 10px; }
+.tarjeta__categoria { font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--rust); }
+.tarjeta__titulo    { font-family: var(--serif); font-size: 1.15rem; line-height: 1.3; }
+.tarjeta__descripcion { font-size: .87rem; color: var(--mid); flex: 1; }
+.tarjeta__pie   { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+.tarjeta__precio { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; }
+.tarjeta__precio span { font-family: var(--sans); font-size: .78rem; font-weight: 400; color: var(--mid); }
+
+
+/* ==============================================
+   GALERÍA (Josué)
+   ============================================== */
+.galeria { background: var(--dark); }
+.galeria .seccion__etiqueta { color: var(--gold); }
+.galeria .seccion__titulo   { color: var(--cream); }
+.galeria__cuadricula { display: flex; flex-wrap: wrap; gap: 10px; }
+.galeria__elemento   { flex: 1 1 200px; height: 200px; position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; }
+.galeria__elemento img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.galeria__elemento:hover img { transform: scale(1.07); }
+.galeria__superposicion {
+  position: absolute; inset: 0; opacity: 0;
+  background: linear-gradient(to top, rgba(26,18,8,.8), transparent 55%);
+  display: flex; align-items: flex-end; padding: 14px;
+  transition: opacity .3s;
+}
+.galeria__elemento:hover .galeria__superposicion { opacity: 1; }
+.galeria__caption { font-family: var(--serif); font-style: italic; color: #fff; font-size: .95rem; }
+
+
+/* ==============================================
+   CONTACTO (Josué)
+   ============================================== */
+.contacto { background: var(--ivory); }
+.contacto__contenedor { display: flex; flex-wrap: wrap; gap: 52px; align-items: flex-start; }
+.contacto__info    { display: flex; flex-direction: column; gap: 26px; flex: 1 1 240px; }
+.contacto__frase   { font-family: var(--serif); font-style: italic; font-size: 1.5rem; line-height: 1.4; }
+.contacto__detalles { display: flex; flex-direction: column; gap: 14px; }
+.contacto__detalle  { display: flex; align-items: center; gap: 14px; }
+.contacto__icono   { width: 36px; height: 36px; border-radius: 50%; background: var(--rust); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contacto__texto        { font-size: .88rem; color: var(--mid); }
+.contacto__texto strong { display: block; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dark); margin-bottom: 1px; }
+
+
+/* ==============================================
+   FORMULARIO (Josué)
+   ============================================== */
+.formulario { display: flex; flex-direction: column; gap: 18px; flex: 2 1 360px; background: #fff; border-radius: var(--r-lg); padding: 36px; box-shadow: var(--s-card); }
+.formulario__fila  { display: flex; flex-wrap: wrap; gap: 14px; }
+.formulario__grupo { display: flex; flex-direction: column; gap: 6px; flex: 1 1 200px; }
+.formulario__grupo--completo { flex: 1 1 100%; }
+.formulario__etiqueta { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--mid); }
+.formulario__campo,
+.formulario__selector,
+.formulario__area {
+  width: 100%; padding: 11px 14px; border: 2px solid var(--border); border-radius: var(--r-sm);
+  font-family: var(--sans); font-size: .88rem; color: var(--dark); background: var(--ivory);
+  outline: none; transition: border-color .2s, box-shadow .2s;
+}
+.formulario__campo:focus,
+.formulario__selector:focus,
+.formulario__area:focus { border-color: var(--rust); box-shadow: 0 0 0 3px rgba(192,57,43,.1); }
+.formulario__area     { resize: vertical; min-height: 100px; }
+.formulario__selector { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a4a35' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+.formulario__verificacion { display: flex; align-items: center; gap: 10px; }
+.formulario__check        { width: 17px; height: 17px; accent-color: var(--rust); cursor: pointer; }
+.formulario__check-etiqueta { font-size: .83rem; color: var(--mid); }
+.formulario__enviar { width: 100%; padding: 15px; border-radius: 40px; border: none; background: var(--rust); color: #fff; font-family: var(--sans); font-size: .92rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; box-shadow: var(--s-btn); transition: background .2s, transform .15s; }
+.formulario__enviar:hover { background: var(--rust-dk); transform: translateY(-2px); }
+
+
+/* ==============================================
+   TODO-LIST — Encabezado + Lista (Sara)
+   ============================================== */
+.todo-list {
+  background-color: var(--ivory);
+  border-radius: var(--r-lg);
+  box-shadow: var(--s-card);
+  border: 1px solid var(--border);
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.todo-list__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.todo-list__icon-container {
+  display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; min-width: 52px;
+  border-radius: 35%; flex-shrink: 0;
+  background: linear-gradient(135deg, #b45405, #eebe39);
+  box-shadow: var(--s-btn); overflow: hidden;
+}
+.todo-list__icon-container img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; }
+.todo-list__info { display: flex; flex-direction: column; justify-content: center; gap: 0.3rem; }
+.todo-list__title { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: var(--dark); line-height: 1.15; letter-spacing: .5px; }
+.todo-list__descripcion { font-size: .82rem; font-weight: 300; color: var(--mid); text-align: justify; line-height: 1.5; font-style: italic; }
+.todo-list__divisor { border: 0; border-top: 1px solid var(--border); }
+.todo-list__items { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
+.todo-list__item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 16px; background: var(--cream);
+  border: 1px solid var(--border); border-radius: 8px;
+  transition: box-shadow .2s, transform .2s;
+}
+.todo-list__item:hover { box-shadow: var(--s-card); transform: translateX(2px); }
+.todo-list__item--pendiente { border-left: 3px solid var(--rust); }
+.todo-list__contenido { display: flex; align-items: center; gap: .65rem; flex: 1; }
+.todo-list__text { font-size: .95rem; color: var(--dark); padding-right: 10px; }
+.todo-list__button-complete,
+.todo-list__button--delete {
+  display: flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; min-width: 30px;
+  border: none; border-radius: 4px; cursor: pointer;
+  font-size: .85rem; font-weight: 700;
+  transition: transform .15s, filter .15s;
+}
+.todo-list__button-complete { background: var(--gold); color: var(--ivory); box-shadow: 0 2px 8px rgba(201,168,76,.4); }
+.todo-list__button-complete:hover { transform: scale(1.1); filter: brightness(1.1); }
+.todo-list__button--delete { background: var(--rust); color: var(--ivory); box-shadow: var(--s-btn); }
+.todo-list__button--delete:hover { background: var(--rust-dk); transform: scale(1.1); }
+
+
+/* ==============================================
+   TESTIMONIAL CHEF (Sara)
+   ============================================== */
+.testimonial { display: flex; flex-direction: column; gap: 20px; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.testimonial__chef {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.testimonial__avatar-wrapper {
+  width: 96px; height: 96px; min-width: 96px;
+  border-radius: 55%; padding: 3.4px;
+  background: linear-gradient(135deg, #493e2f, #973711);
+  box-shadow: 0 4px 12px rgba(26,18,8,.15);
+  overflow: hidden; flex-shrink: 0;
+}
+.testimonial__avatar {
+  width: 100%; height: 100%;
+  border-radius: 50%; object-fit: cover;
+  display: block;
+}
+.testimonial__content { display: flex; flex-direction: column; gap: .35rem; }
+.testimonial__text { font-family: var(--serif); font-style: italic; font-size: .9rem; color: var(--mid); text-align: justify; line-height: 1.65; margin: 0; }
+.testimonial__autor { font-size: .78rem; font-weight: 700; color: var(--rust); text-transform: uppercase; letter-spacing: .9px; }
+
+
+/* ==============================================
+   BARRA LATERAL (Julián)
+   ============================================== */
+.vista-previa { display: flex; min-height: 520px; }
+.barra-lateral { display: flex; flex-direction: column; width: 260px; flex-shrink: 0; background: var(--dark); overflow: hidden; position: relative; }
+.barra-lateral::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(135deg,rgba(255,255,255,.015) 0 1px,transparent 1px 12px); }
+.barra-lateral__encabezado { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 36px 28px 24px; border-bottom: 1px solid var(--border-a2); }
+.barra-lateral__logo { font-size: 1.6rem; color: var(--gold); line-height: 1; }
+.barra-lateral__subtitulo { font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-a5); }
+.barra-lateral__navegacion { display: flex; flex-direction: column; flex: 1; padding: 16px 0; }
+.barra-lateral__item { display: flex; align-items: center; gap: 14px; padding: 14px 28px; color: var(--cream-a6); font-size: .82rem; letter-spacing: .06em; text-transform: uppercase; border-left: 3px solid transparent; transition: color .2s, background .2s, border-left-color .2s; }
+.barra-lateral__item:hover { color: var(--cream); background: rgba(201,168,76,.08); border-left-color: rgba(201,168,76,.4); }
+.barra-lateral__item--activo { color: var(--gold); font-weight: 700; background: var(--gold-a1); border-left-color: var(--gold); }
+.barra-lateral__icono { width: 20px; text-align: center; flex-shrink: 0; }
+.barra-lateral__etiqueta { flex: 1; }
+.barra-lateral__badge { padding: 2px 7px; border-radius: 20px; background: var(--rust); color: #fff; font-size: .6rem; font-weight: 700; }
+.barra-lateral__pie { padding: 16px 28px; border-top: 1px solid rgba(212,196,168,.12); }
+.barra-lateral__boton-reserva { display: block; width: 100%; padding: 12px; font-size: .9rem; text-align: center; }
+.zona-contenido { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; gap: 12px; padding: 40px; background: var(--ivory); color: var(--mid); font-size: 1.1rem; text-align: center; }
+.zona-contenido__flecha { font-size: 2rem; color: var(--border); }
+
+
+/* ==============================================
+   SECCIÓN PRECIOS (Julián)
+   ============================================== */
+.seccion-precios { padding: 56px 40px; background: var(--ivory); }
+.seccion-precios__encabezado { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 48px; text-align: center; }
+.seccion-precios__titulo { font-size: 2.4rem; line-height: 1.1; }
+.seccion-precios__descripcion { font-size: .92rem; color: var(--mid); line-height: 1.7; }
+.seccion-precios__cuadricula { display: flex; align-items: stretch; justify-content: center; gap: 24px; flex-wrap: wrap; }
+
+
+/* ==============================================
+   TARJETA PRECIO (Julián)
+   ============================================== */
+.tarjeta-precio { display: flex; flex-direction: column; align-items: center; flex: 1 1 260px; max-width: 300px; padding: 40px 32px; background: var(--cream); border: 1px solid var(--border); border-radius: var(--r-lg); box-shadow: var(--s-card); position: relative; transition: transform .25s, box-shadow .25s; animation: fadeUp .5s ease both; }
+.tarjeta-precio:nth-child(1) { animation-delay: .05s; }
+.tarjeta-precio:nth-child(2) { animation-delay: .15s; }
+.tarjeta-precio:nth-child(3) { animation-delay: .25s; }
+.tarjeta-precio:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(26,18,8,.18); }
+.tarjeta-precio--destacada { background: var(--dark); border-color: var(--gold); }
 .tarjeta-precio--destacada .tarjeta-precio__nombre,
 .tarjeta-precio--destacada .tarjeta-precio__monto,
 .tarjeta-precio--destacada .tarjeta-precio__periodo,
-.tarjeta-precio--destacada .tarjeta-precio__beneficio{color:var(--cream)}
-.tarjeta-precio--destacada .tarjeta-precio__simbolo{color:var(--gold)}
-.tarjeta-precio--destacada .tarjeta-precio__divisor{background:rgba(201,168,76,.3)}
-
-/* Badge "Más popular" flotante, centrado con transform */
-.tarjeta-precio__insignia{position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:4px 16px;border-radius:20px;background:var(--gold);color:var(--dark);font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
-
-.tarjeta-precio__categoria{margin-bottom:8px}
-.tarjeta-precio__nombre{font-size:1.4rem;text-align:center;line-height:1.2}
-/* Precio: símbolo pequeño + número grande alineados arriba */
-.tarjeta-precio__precio{display:flex;align-items:flex-start;gap:2px;margin:16px 0 4px}
-.tarjeta-precio__simbolo{font-size:1.1rem;color:var(--rust);margin-top:8px}
-.tarjeta-precio__monto{font-size:2.8rem;font-weight:700;line-height:1}
-.tarjeta-precio__periodo{font-size:.8rem;color:var(--mid);margin-bottom:16px}
-.tarjeta-precio__divisor{width:40px;height:1px;background:var(--border);margin:0 auto 16px}
-/* flex:1 hace que la lista crezca y empuje el botón siempre al fondo */
-.tarjeta-precio__lista{display:flex;flex-direction:column;gap:8px;width:100%;margin-bottom:28px;flex:1}
-.tarjeta-precio__beneficio{display:flex;align-items:flex-start;gap:8px;font-size:.83rem;color:var(--mid);line-height:1.4}
-/* Ícono decorativo ✦ generado con CSS, sin HTML extra */
-.tarjeta-precio__beneficio::before{content:'✦';color:var(--gold);font-size:.55rem;flex-shrink:0;margin-top:4px}
-
-/* Botón base: contorno rojo */
-.tarjeta-precio__boton{display:block;width:100%;padding:13px 20px;background:transparent;color:var(--rust);font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;text-align:center;border:2px solid var(--rust);border-radius:var(--r-sm);transition:background .2s,color .2s,box-shadow .2s}
-/* Hover y modificador --principal comparten el mismo estilo relleno */
+.tarjeta-precio--destacada .tarjeta-precio__beneficio { color: var(--cream); }
+.tarjeta-precio--destacada .tarjeta-precio__simbolo { color: var(--gold); }
+.tarjeta-precio--destacada .tarjeta-precio__divisor { background: rgba(201,168,76,.3); }
+.tarjeta-precio__insignia { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); padding: 4px 16px; border-radius: 20px; background: var(--gold); color: var(--dark); font-size: .62rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; white-space: nowrap; }
+.tarjeta-precio__categoria { margin-bottom: 8px; }
+.tarjeta-precio__nombre { font-size: 1.4rem; text-align: center; line-height: 1.2; }
+.tarjeta-precio__precio { display: flex; align-items: flex-start; gap: 2px; margin: 16px 0 4px; }
+.tarjeta-precio__simbolo { font-size: 1.1rem; color: var(--rust); margin-top: 8px; }
+.tarjeta-precio__monto { font-size: 2.8rem; font-weight: 700; line-height: 1; }
+.tarjeta-precio__periodo { font-size: .8rem; color: var(--mid); margin-bottom: 16px; }
+.tarjeta-precio__divisor { width: 40px; height: 1px; background: var(--border); margin: 0 auto 16px; }
+.tarjeta-precio__lista { display: flex; flex-direction: column; gap: 8px; width: 100%; margin-bottom: 28px; flex: 1; }
+.tarjeta-precio__beneficio { display: flex; align-items: flex-start; gap: 8px; font-size: .83rem; color: var(--mid); line-height: 1.4; }
+.tarjeta-precio__beneficio::before { content: '✦'; color: var(--gold); font-size: .55rem; flex-shrink: 0; margin-top: 4px; }
+.tarjeta-precio__boton { display: block; width: 100%; padding: 13px 20px; background: transparent; color: var(--rust); font-size: .78rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; text-align: center; border: 2px solid var(--rust); border-radius: var(--r-sm); transition: background .2s, color .2s, box-shadow .2s; }
 .tarjeta-precio__boton:hover,
-.tarjeta-precio__boton--principal{background:var(--rust);color:#fff;box-shadow:var(--s-btn)}
-.tarjeta-precio__boton--principal:hover{background:var(--rust-dk);border-color:var(--rust-dk)}
+.tarjeta-precio__boton--principal { background: var(--rust); color: #fff; box-shadow: var(--s-btn); }
+.tarjeta-precio__boton--principal:hover { background: var(--rust-dk); border-color: var(--rust-dk); }
 
 
-/* === 8. PIE-PAGINA: footer 3 columnas (Componente 8) === */
-
-.pie-pagina{position:relative;background:var(--dark);color:var(--cream-a6);overflow:hidden}
-/* Línea superior: degradado dorado → rojo → dorado */
-.pie-pagina::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--rust),var(--gold),transparent)}
-
-/* Cuerpo: 3 columnas en fila, apila en móvil con flex-wrap */
-.pie-pagina__cuerpo{display:flex;align-items:flex-start;gap:40px;padding:64px 60px 48px;flex-wrap:wrap}
-/* flex:1 1 0 (base 0) garantiza que las 3 columnas sean exactamente iguales */
-.pie-pagina__columna{display:flex;flex-direction:column;flex:1 1 0;min-width:200px;gap:16px}
-.pie-pagina__titulo-columna{font-size:1.1rem;color:var(--gold);padding-bottom:12px;border-bottom:1px solid var(--border-a2)}
-
-/* Columna 1: marca */
-.pie-pagina__logo{font-size:2rem;color:var(--gold);line-height:1}
-.pie-pagina__eslogan{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-a5)}
-/* Descripción y newsletter tienen los mismos estilos — selector agrupado */
+/* ==============================================
+   PIE DE PÁGINA (Julián)
+   ============================================== */
+.pie-pagina { position: relative; background: var(--dark); color: var(--cream-a6); overflow: hidden; }
+.pie-pagina::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg,transparent,var(--gold),var(--rust),var(--gold),transparent); }
+.pie-pagina__cuerpo { display: flex; align-items: flex-start; gap: 40px; padding: 64px 60px 48px; flex-wrap: wrap; }
+.pie-pagina__columna { display: flex; flex-direction: column; flex: 1 1 0; min-width: 200px; gap: 16px; }
+.pie-pagina__titulo-columna { font-size: 1.1rem; color: var(--gold); padding-bottom: 12px; border-bottom: 1px solid var(--border-a2); }
+.pie-pagina__logo { font-size: 2rem; color: var(--gold); line-height: 1; }
+.pie-pagina__eslogan { font-size: .68rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold-a5); }
 .pie-pagina__descripcion,
-.pie-pagina__texto-newsletter{font-size:.82rem;line-height:1.8;color:rgba(249,243,232,.45)}
-.pie-pagina__redes{display:flex;gap:12px}
-.pie-pagina__red{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(212,196,168,.2);font-size:.72rem;color:var(--gold-a5);transition:border-color .2s,color .2s}
-.pie-pagina__red:hover{border-color:var(--gold);color:var(--gold)}
-
-/* Columna 2: contacto */
-.pie-pagina__lista-contacto{display:flex;flex-direction:column;gap:14px}
-.pie-pagina__dato{display:flex;align-items:flex-start;gap:12px;font-size:.82rem;line-height:1.6}
-.pie-pagina__icono-dato{color:var(--gold);flex-shrink:0;margin-top:2px}
-.pie-pagina__texto-dato{color:rgba(249,243,232,.55)}
-.pie-pagina__horario{display:flex;flex-direction:column;gap:8px}
-.pie-pagina__turno{display:flex;justify-content:space-between;gap:16px;font-size:.79rem}
-.pie-pagina__dia{color:var(--gold-a5)}
-.pie-pagina__hora{font-weight:700;color:var(--cream)}
-
-/* Columna 3: newsletter */
-.pie-pagina__formulario{display:flex;flex-direction:column;gap:8px}
-.pie-pagina__campo{padding:12px 16px;background:rgba(255,255,255,.05);border:1px solid var(--border-a2);border-radius:var(--r-sm);color:var(--cream);font-family:var(--sans);font-size:.82rem;outline:none;transition:border-color .2s}
-.pie-pagina__campo::placeholder{color:var(--cream-a3)}
-.pie-pagina__campo:focus{border-color:var(--gold)}
-.pie-pagina__boton-newsletter{padding:12px;font-size:.9rem;width:100%}
-
-/* Barra inferior: copyright izquierda, links legales derecha */
-.pie-pagina__barra-inferior{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:20px 60px;border-top:1px solid rgba(212,196,168,.1)}
+.pie-pagina__texto-newsletter { font-size: .82rem; line-height: 1.8; color: rgba(249,243,232,.45); }
+.pie-pagina__redes { display: flex; gap: 12px; }
+.pie-pagina__red { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(212,196,168,.2); font-size: .72rem; color: var(--gold-a5); transition: border-color .2s, color .2s; }
+.pie-pagina__red:hover { border-color: var(--gold); color: var(--gold); }
+.pie-pagina__lista-contacto { display: flex; flex-direction: column; gap: 14px; }
+.pie-pagina__dato { display: flex; align-items: flex-start; gap: 12px; font-size: .82rem; line-height: 1.6; }
+.pie-pagina__icono-dato { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.pie-pagina__texto-dato { color: rgba(249,243,232,.55); }
+.pie-pagina__horario { display: flex; flex-direction: column; gap: 8px; }
+.pie-pagina__turno { display: flex; justify-content: space-between; gap: 16px; font-size: .79rem; }
+.pie-pagina__dia { color: var(--gold-a5); }
+.pie-pagina__hora { font-weight: 700; color: var(--cream); }
+.pie-pagina__formulario { display: flex; flex-direction: column; gap: 8px; }
+.pie-pagina__campo { padding: 12px 16px; background: rgba(255,255,255,.05); border: 1px solid var(--border-a2); border-radius: var(--r-sm); color: var(--cream); font-family: var(--sans); font-size: .82rem; outline: none; transition: border-color .2s; }
+.pie-pagina__campo::placeholder { color: var(--cream-a3); }
+.pie-pagina__campo:focus { border-color: var(--gold); }
+.pie-pagina__boton-newsletter { padding: 12px; font-size: .9rem; width: 100%; }
+.pie-pagina__barra-inferior { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 20px 60px; border-top: 1px solid rgba(212,196,168,.1); }
 .pie-pagina__copyright,
-.pie-pagina__enlace-legal{font-size:.74rem;color:var(--cream-a3)}
-.pie-pagina__legales{display:flex;gap:16px}
-.pie-pagina__enlace-legal{transition:color .2s}
-.pie-pagina__enlace-legal:hover{color:var(--gold)}
+.pie-pagina__enlace-legal { font-size: .74rem; color: var(--cream-a3); }
+.pie-pagina__legales { display: flex; gap: 16px; }
+.pie-pagina__enlace-legal { transition: color .2s; }
+.pie-pagina__enlace-legal:hover { color: var(--gold); }
 
 
-/* === 9. ANIMACIÓN: entrada suave desde abajo === */
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
+/* ==============================================
+   RESPONSIVE
+   ============================================== */
+@media (max-width: 680px) {
+  .navegacion { padding: 0 16px; }
+  .navegacion__enlace { padding: 7px 10px; font-size: .74rem; }
+  .encabezado__estadisticas { flex-wrap: wrap; border-radius: 16px; }
+  .galeria__elemento { flex: 1 1 140px; }
+  .formulario { padding: 24px 18px; }
+  .testimonial__chef { flex-direction: column; text-align: center; }
+}
+
+
+/* ==============================================
+   ANIMACIONES
+   ============================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
