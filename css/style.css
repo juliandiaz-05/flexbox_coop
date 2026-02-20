@@ -1,76 +1,134 @@
-/* bloque principal */
-.todo-list{
-display: flex;
-flex-direction: column;
-max-width: 450px;
-margin: 3rem auto;
-padding: 2rem;
-background-color: aliceblue;
-border-radius: 12px;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-box-shadow: 0 10px 25px rgba(171, 171, 255, 0.4);
+/* Aplica estilo a todos los elementos justo antes y justo después */
+*, *::before, *::after {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
 }
 
-/* encabezado de seccion */
+/* B O D Y */
+
+body {
+min-height: 100vh; /*viewport, 100% de altura en pantalla completa lero lero */
+font-family: 'Lato', sans-serif;
+color: #1a1208;
+background-color: #e8dcc8;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 2.5rem 1rem;
+}
+
+/* bloque principal */
+.todo-list{
+background-color: #fdf7ee;
+border-radius: 20px;
+box-shadow: 0 8px 32px rgba(26, 18, 8, 0.12);
+border: 1px solid #d4c4a8;
+max-width: 480px;
+width: 100%;
+padding: 2.25rem 2rem;
+position: relative;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+}
+
+/* E N C A B E Z A D O de seccion. Contenedor en fila */
 .todo-list__header {
 display: flex;
-align-items: flex-start;
-gap: 15px;
-margin-bottom: 1rem; 
+align-items: flex-start; /* Icono a la parte superior */
+gap: 1rem; 
 }
 
 .todo-list__icon-container {
-font-size: 2rem;
-background-color: rgb(241, 255, 255);
-padding: 10px;
-border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 52px;
+height: 52px;
+min-width: 52px;
+flex-shrink: 0;
+background: linear-gradient(135deg, #c0392b, #96281b);
+border-radius: 4px;
+box-shadow: 0 4px 12px rgba(192, 57, 43, 0.35);
+}
+
+.todo-list__icon-container img{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.todo-list__icon {
+font-size: 1.6rem;
+line-height: 1;
+color: #fdf7ee;
 }
 
 .todo-list__info {
 display: flex;
 flex-direction: column;
+justify-content: center;
+gap: 0.3rem;
 }
 
 .todo-list__title {
-margin: 0;
-font-size: 1.25rem;
-color: black;
+font-family: 'Playfair Display', Georgia, serif;
+font-size: 1.4rem;
+font-weight: 700;
+color: #1a1208;
+line-height: 1.15;
+letter-spacing: 0.5px;
 }
 
 .todo-list__descripcion {
-margin: 4px 0 0 0;
-font-size:0.9rem;
-color: brown;
+font-size:0.82rem;
+font-weight: 300;
+color: #5a4a35;
 text-align: justify;
-line-height: 1.4;
+line-height: 1.5;
+font-style: italic;
 }
+
+/* DIVISOR */
 .todo-list__divisor {
 border: 0;
-border-top: 1px solid #7e2727;
+border-top: 1px solid #d4c4a8;
 }
-/* lista de items */
+
+/* LISTA DE T A R E A S brr*/
 .todo-list__items {
-list-style: circle;
-padding: 12px 16px;
+list-style: none;
+padding: 0;
 display: flex;
 flex-direction: column; /*Apila los items en columnita */
-gap: 0.75rem; /* Brecha entre columna */
-background: rgba(194, 253, 253, 0.487);
-border:  1px solid #000000;
-border-radius: 16px;
+gap: 0.75rem; /* espacio entre columna */
 }
 
 .todo-list__item {
 display: flex;
 justify-content: space-between;
 align-items: center;
+padding: 12px 16px;
+background: #f9f3e8;
+border: 1px solid #d4c4a8;
+border-radius: 8px;
+transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* Pseudocodigo :hover para button */
+.todo-list__item:hover {
+box-shadow: 0 8px 32px rgba(26, 18, 8, 0.12);
+transform: translateX(2px);
 }
 
 /*contenedor de iconos */
-.todo-list__content {
+.todo-list__contenido {
 display: flex;
 align-items: center;
-gap: 10px;
+gap: 0.65rem;
 flex: 1;
 }
 
@@ -83,73 +141,98 @@ padding-right: 10px;
 
 /* botones */
 .todo-list__button-complete{
+display: flex;
+align-items: center;
+justify-content: center;
+width: 30px;
+height: 30px;
+min-width: 30px;
+border: none;
+border-radius: 4px;
 cursor: pointer;
-background-color: #000000;
-border: none;
-border-radius: 6px;
-width: 32px;
-height: 32px;
+font-size: 0.85rem;
+font-weight: 700;
+background-color: #c9a84c;
+color: #fdf7ee;
+box-shadow: 0 2px 8px rgba(201, 168, 76, 0.4);transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.todo-list__button-complete:hover {
+transform: scale(1.1); /*Modifica el espacio, rota, escala tamaño, traslada sin alterar nada */
+filter: brightness(1.1); /*Efectos visuales (desenfoque, brillo, contraste, escala... */
+}
+
+.todo-list__button--delete{
 display: flex;
 align-items: center;
 justify-content: center;
-transition: all 0.2s ease;
-}
-
-.todo-list__button-delete{
-cursor: ew-resize;
+width: 30px;
+height: 30px;
+min-width: 30px;
 border: none;
-border-radius: 6px;
-width: 32px;
-height: 32px;
-display: flex;
-align-items: center;
-justify-content: center;
-transition: 0.2s 
+border-radius: 4px;
+cursor: pointer;
+font-size: 0.85rem;
+font-weight: 700;
+background-color: #c0392b;
+color: #fdf7ee;
+box-shadow: 0 4px 12px rgba(192, 57, 43, 0.35);
+transition: transform 0.15s ease, filter 0.15s ease;
 }
 
-.todo-list__item--pendiente {border-left: 4px solid #ffffff;}
+.todo-list__button--delete:hover {
+background-color: #96281b;
+transform: scale(1.1);
+}
 
-/* bloque testimonial */
+.todo-list__item--pendiente {
+border-left: 3px solid #c0392b;}
+
+/* bloque TESTIMONAL */
 .testimonial {
 display: flex;
 align-items: center;
 gap: 20px;
-margin-top: 2rem;
 padding-top: 1.5rem;
-border-top: 1px solid #161515;
+border-top: 1px solid #d4c4a8;
 }
 
 /* elementos del avatar */
 .testimonial__avatar {
 width: 68px;
 height: 68px;
+min-width: 68px;
 border-radius: 50%;
 object-fit: cover;
-border: 2px solid #e500b3;
+border: 2px solid #c9a84c;
+background: linear-gradient(#fdf7ee, #fdf7ee); 
+            linear-gradient (135deg, #c9a84c, #c0392b) border-box;
+box-shadow: 0 4px 12px rgba(26, 18, 8, 0.15);
 }
 
 /* elemento contenido */
 .testimonial__content {
 display: flex;
 flex-direction: column;
-gap: 7px;
+gap: 0.35rem;
 }
 
 /* elemento texto */
 .testimonial__text {
-margin: 0;
-font-size: 1rem;
+font-family: 'Playfair Display', Georgia, serif;
 font-style: italic;
-color: #e500b3;
+font-size: 0.9rem;
+color: #5a4a35;
 text-align: justify;
-line-height: 2.0;
+line-height: 1.65;
+margin: 0;
 }
 
 /*elemento autor */
 .testimonial__autor {
-font-size: 0.85rem;
+font-size: 0.78rem;
 font-weight: bold;
-color: #7e2727;
+color: #c0392b;
 text-transform: uppercase;
-letter-spacing: 0.5px;
+letter-spacing: 0.8px;
 }
