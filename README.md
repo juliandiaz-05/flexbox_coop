@@ -27,13 +27,15 @@ flexbox/
 
 ## Componentes
 
-1. Barra de navegación horizontal
-2. Tarjeta de producto
-3. Galería de imágenes
-4. Formulario de contacto
-5. Encabezado de sección
-6. Lista de tareas
-7. Componente de testimonial
-8. Footer con tres columnas
-9. Sección de precios
-10. Sidebar de navegación
+1. Barra de navegación horizontal → Josue Solano
+2. Tarjeta de producto → Josue Solano
+3. Galería de imágenes → Josue Solano
+4. Formulario de contacto → Josue Solano
+5. Encabezado de sección → Sara Rojas
+6. Lista de tareas → Sara Rojas
+7. Componente de testimonial → Sara Rojas
+8. Footer con tres columnas → Julian Diaz
+9. Sección de precios → Julian Diaz
+10. Sidebar de navegación → Julian Diaz
+
+( ͡❛ ᴗ ͡❛)✧.°
